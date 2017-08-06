@@ -1,42 +1,55 @@
+from __future__ import print_function
 import os
+import sys
+import argparse
 import numpy as np
 import topy
 from sampler import random_config
 
-DIR_TO_SAVE = './TOP4040'
-NUM_SAMPLES = 1
+
 topy.Logger.verbose = False
 
 def optimize(t):
     desvars = []
-
     for i in range(t.numiter):
         # Main operations
         t.fea()
         t.sens_analysis()
         t.filter_sens_sigmund()
         t.update_desvars_oc()
-
-        desvars.append(t.desvars)
-        
+        desvars.append(t.desvars)   
     return np.array(desvars)
 
 
-if __name__ == "__main__":
+def main(dir_to_save, num_samples):
+    
+    if not os.path.exists(dir_to_save):
+        os.mkdir(dir_to_save)
+        print('Directory "{}" created'.format(dir_to_save))
 
-    if not os.path.exists(DIR_TO_SAVE):
-        os.mkdir(DIR_TO_SAVE)
-
-    n_sample = 0
-    while n_sample < NUM_SAMPLES:
-        try:        
+    print('Generating the dataset...')
+    samples_done = 0
+    while samples_done < num_samples:
+        try:
             topology = topy.Topology(config=random_config())
             topology.set_top_params()
             sample = optimize(topology)
+            path = os.path.join(dir_to_save, str(samples_done))
+            np.savez_compressed(path, sample)
+            samples_done += 1 
         except BaseException: # For the incorrect constraints
-            continue
-        
-        path = os.path.join(DIR_TO_SAVE, str(n_sample))
-        np.savez_compressed(path, sample)
-        n_sample += 1
+            pass
+        print('\rDone: {}/{}'.format(samples_done, num_samples), end='')
+        sys.stdout.flush()
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dir', type=str, default='./TOP4040')
+    parser.add_argument('--num', type=int, default=10000)
+    args = parser.parse_args()
+
+    main(args.dir, args.num)
+
+
 
