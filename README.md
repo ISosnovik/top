@@ -29,7 +29,11 @@ NL ∼ P(λ=1)
 - The load values are chosen as **-1**
 - The volume fraction is sampled from the normal distribution `N(μ=0.5,σ=0.1)`
 
-You can generate your own dataset just by using scripts from `code/` folder. `sampler.py` defines all the required distributions, and `generate_data.py` is just a convenient wrapper for ***ToPy***.
+You can generate your own dataset just by using scripts from `code/` folder. `sampler.py` defines all the required distributions, and `generate_data.py` is just a convenient wrapper for ***ToPy***. Install [ToPy][ToPy] and run:
+
+```
+python code/generate_data.py --dir DIR_TO_SAVE --num NUMBER_OF_SAMPLES
+```
 
 ## How to use
 Each tensor is stored in compressed format `.npz`. It could be extracted easily with ***numpy***:
