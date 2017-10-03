@@ -11,7 +11,7 @@
 The dataset of topology optimization process. It contains the precise solutions of 10,000 randomly stated problems. Each object is a tensor of shape `(100, 40, 40)`: 100 iterations, `40×40` grid. 
 
 ## How it is generated
-We used [ToPy][topy] for the generation of the current dataset. It is based on [SIMP][simp] approach. 
+We used [Topy][topy] for the generation of the current dataset. It is based on [SIMP][simp] approach. 
 
 The constraints and loads for each of the problem are chosen in the following way:
 
@@ -48,3 +48,17 @@ We recommend to use horizontal and vertical flips as well as `90°` rotation to 
 
 ## What TopOpt is
 If you want to learn more about topology optimization you can visit the [website][topopt] of TopOpt Research Group from DTU. 
+
+## Citation policy
+Please cite our work if you write a scientific paper using this code and/or dataset.
+
+```latex
+@article{sosnovik2017neural,
+  title={Neural networks for topology optimization},
+  author={Sosnovik, Ivan and Oseledets, Ivan},
+  journal={arXiv preprint arXiv:1709.09578},
+  year={2017}
+}
+```
+
+
