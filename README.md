@@ -1,12 +1,13 @@
-[topopt]:http://www.topopt.dtu.dk
 [simp]: http://www.topopt.dtu.dk/files/matlab.pdf
 [topy]:https://github.com/williamhunter/topy
-[top4040]:https://storage.googleapis.com/top4040/TOP4040.zip
+[url_yandex]:https://yadi.sk/d/1EE7UdYJChIkQQ
 
 ![](./src/top_dataset_pics.png)
 # TOP: Topology Optimization Process
+Dataset used in "*Neural Networks for Topology Optimization*"
+[[pdf](https://arxiv.org/pdf/1709.09578.pdf)][[code](https://github.com/ISosnovik/nn4topopt)]
 
-[**Download (3.08 Gb)**][top4040]
+**Download (~3 Gb)** [Yandex Drive][url_yandex] 
 
 The dataset of topology optimization process. It contains the precise solutions of 10,000 randomly stated problems. Each object is a tensor of shape `(100, 40, 40)`: 100 iterations, `40×40` grid. 
 
@@ -17,11 +18,7 @@ The constraints and loads for each of the problem are chosen in the following wa
 
 - The number of nodes with fixed ***x*** and ***y*** translations and the number of loads are sampled from the Poisson distribution:
 
-```
-Nx ∼ P(λ=2)
-Ny ∼ P(λ=1)
-NL ∼ P(λ=1)
-```
+<img src="./src/dist.png" width=30%>
 
 - The nodes for each of the above described constraints are sampled from the distribution defined on the grid. The probability to choose the boundary node is 100 times higher than that for inner node.
 <img src="./src/probs.png" width=30%>
@@ -46,10 +43,7 @@ data = np.load(PATH_TO_FILE)['arr_0']
 
 We recommend to use horizontal and vertical flips as well as `90°` rotation to augment the initial dataset. These operations allow one to get the dataset of 80,000 objects.
 
-## What TopOpt is
-If you want to learn more about topology optimization you can visit the [website][topopt] of TopOpt Research Group from DTU. 
-
-## Citation policy
+## Citation
 Please cite our work if you write a scientific paper using this code and/or dataset.
 
 ```latex
