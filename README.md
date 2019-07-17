@@ -1,4 +1,4 @@
-[simp]: http://www.topopt.dtu.dk/files/matlab.pdf
+[simp]: http://www.mae.ufl.edu/nkim/egm6365/Solutions/ch10.pdf
 [topy]:https://github.com/williamhunter/topy
 [url_yandex]:https://yadi.sk/d/1EE7UdYJChIkQQ
 
@@ -17,14 +17,20 @@ We used [Topy][topy] for the generation of the current dataset. It is based on [
 The constraints and loads for each of the problem are chosen in the following way:
 
 - The number of nodes with fixed ***x*** and ***y*** translations and the number of loads are sampled from the Poisson distribution:
+<div align="center">
+    <img src="./src/dist.png" width=25%>
+</div>
 
-<img src="./src/dist.png" width=30%>
 
 - The nodes for each of the above described constraints are sampled from the distribution defined on the grid. The probability to choose the boundary node is 100 times higher than that for inner node.
-<img src="./src/probs.png" width=30%>
+
+<div align="center">
+    <img src="./src/probs.png" width=30%>
+</div>
+
 
 - The load values are chosen as **-1**
-- The volume fraction is sampled from the normal distribution `N(μ=0.5,σ=0.1)`
+- The volume fraction is sampled from the Gaussian distribution with mean of 0.5 and std of 0.1
 
 You can generate your own dataset just by using scripts from `code/` folder. `sampler.py` defines all the required distributions, and `generate_data.py` is just a convenient wrapper for ***ToPy***. Install [ToPy][ToPy] and run:
 
