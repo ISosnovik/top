@@ -5,7 +5,7 @@
 ![](./src/top_dataset_pics.png)
 # TOP: Topology Optimization Process
 Dataset used in "*Neural Networks for Topology Optimization*"
-[[pdf](https://arxiv.org/pdf/1709.09578.pdf)][[code](https://github.com/ISosnovik/nn4topopt)]
+[[link](https://www.degruyter.com/view/j/rnam.2019.34.issue-4/rnam-2019-0018/rnam-2019-0018.xml)][[pdf](https://arxiv.org/pdf/1709.09578.pdf)][[code](https://github.com/ISosnovik/nn4topopt)]
 
 **Download (~3 Gb)** [Yandex Drive][url_yandex] 
 
